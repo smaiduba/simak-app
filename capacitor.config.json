@@ -6,3 +6,18 @@
     "androidScheme": "https"
   }
 }
+
+{
+  "appId": "com.smaiduba.simak",
+  "appName": "SIMAK DUBA",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "launchAutoHide": true
+    }
+  }
+}
