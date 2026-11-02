@@ -3530,7 +3530,7 @@
   <!-- =====================================================================
        B1. SCREEN LOADING
        ===================================================================== -->
-  <div id="screen-loading" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950">
+  <div id="screen-loading" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950">
     <div class="text-center">
       <div class="w-16 h-16 rounded-2xl bg-emerald-600/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 mx-auto mb-4 animate-pulse">
         <i data-lucide="graduation-cap" class="w-8 h-8"></i>
@@ -3543,7 +3543,7 @@
   <!-- =====================================================================
   B2. SCREEN LOGIN
   ===================================================================== -->
-  <div id="screen-login" class="hidden fixed inset-0 z-50 bg-slate-950 overflow-y-auto">
+  <div id="screen-login" class="fixed inset-0 z-50 bg-slate-950 overflow-y-auto">
 
     <!-- ===== BACKGROUND LAYER ===== -->
     <div class="login-bg-mesh" aria-hidden="true"></div>
@@ -15790,9 +15790,6 @@ function handleLoginSubmit(e) {
       var loadingScreen = document.getElementById('screen-loading');
       var loginScreen = document.getElementById('screen-login');
       var mainApp = document.getElementById('main-app-container');
-
-      if (loginScreen) loginScreen.classList.add('hidden');
-      if (mainApp) mainApp.classList.add('hidden');
 
       var savedToken = getStoredSessionToken_();
       if (!savedToken) {
