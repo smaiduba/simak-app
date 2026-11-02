@@ -1,0 +1,45 @@
+name: Build APK Otomatis
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Checkout Repositori
+      uses: actions/checkout@v3
+
+    - name: 2. Siapkan Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: 3. Instal Capacitor
+      run: npm install
+
+    - name: 4. Siapkan Java (Android)
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: 5. Tambah Platform Android
+      run: npx cap add android
+
+    - name: 6. Sinkronisasi Web ke Android
+      run: npx cap sync
+
+    - name: 7. Bangun File APK
+      run: |
+        cd android
+        chmod +x gradlew
+        ./gradlew assembleDebug
+
+    - name: 8. Simpan File APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: SIMAK-APK
+        path: android/app/build/outputs/apk/debug/app-debug.apk
